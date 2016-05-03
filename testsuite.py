@@ -37,9 +37,8 @@ class gradeFile (object):
         return list(self._results)
 
     def _IOtest(self, input, output):
-        proc = Popen("python3.5 "+self._filename, stdin = PIPE, stdout=PIPE, stderr= PIPE, shell = True )
+        proc = Popen("python3.5 " + self._filename, stdin = PIPE, stdout=PIPE, stderr= PIPE, shell = True )
         try:
-            proc.stdout.readline()
             realoutput = proc.communicate(input = input.encode('utf-8'), timeout= self._runtime)[0]
             realoutput = realoutput.decode()
             outtuple = (input, output, format(realoutput), output in realoutput)
@@ -54,7 +53,7 @@ class gradeFile (object):
         out = self._filename+"\n"
         cases = 1
         for result in self._results:
-            out+= "Case: "+str(cases)+"\n    Input: "+str(result[0])+"\n    Expected Output: "+str(result[1])+"\n    Actual Output: "+str(result[2])+"    Actual in Expected:"+str(result[3])+"\n\n"
+            out+= "Case: "+str(cases)+"\n    Input: "+str(result[0])+"\n    Expected Output: "+str(result[1])+"\n    Actual Output: "+str(result[2])+"\n    Actual in Expected:"+str(result[3])+"\n\n"
             cases+=1
         return out
 

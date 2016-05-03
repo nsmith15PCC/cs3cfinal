@@ -6,17 +6,17 @@ class check_comments(object):
         self._filename = file
         filesplit = self._filename.split('.')
         self._name = filesplit[0]
-        self._type = filesplit[1]
+        self._type = ".py"
         self.process()
 
     def process(self):
         f = open(self._filename, 'r')
         lines = f.readlines()
         commentseparator = ()
-        if self._type is ".cpp" or ".java":
-            commentseparator = ("//", "/*")
-        elif self._type is ".py":
+        if self._type == ".py":
             commentseparator = ('"""', '#')
+        elif self._type == ".cpp" or self._type == ".java":
+            commentseparator = ("//", "/*")
         linecount = 0
         commentcount = 0
         functioncount = 0
@@ -24,11 +24,14 @@ class check_comments(object):
             linecount += 1
             for separator in commentseparator:
                 if separator in line:
-                    commentcount += 1
-                if "def" in line:
-                    functioncount += 1
+                    if separator == '"""':
+                        commentcount += 0.5 * line.count('"""')
+                    else:
+                        commentcount += 1
+            if "def" in line:
+                functioncount += 1
         self._linecount = linecount
-        self._commentcount = commentcount
+        self._commentcount = int(commentcount)
         self._functioncount = functioncount
 
     def countComments(self):

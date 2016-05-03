@@ -66,7 +66,6 @@ class MyForm(QtGui.QMainWindow):
 
     def reset(self, listoftuples):
         if (self._files != None):
-            print(listoftuples)
             self._files.createAlltests(listoftuples)
             self._files.runTests()
 
