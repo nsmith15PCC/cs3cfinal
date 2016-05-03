@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1182</width>
+    <height>744</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Autograder</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Directory:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="directorybox">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="browsebutton">
+          <property name="text">
+           <string>Browse</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="clearbutton">
+          <property name="text">
+           <string>Clear</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Recognized Scripts:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QListWidget" name="scriptlist"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QGridLayout" name="gridLayout_2" columnminimumwidth="1,1,3,1,1">
+        <item row="0" column="1">
+         <widget class="QLabel" name="label_15">
+          <property name="text">
+           <string>Comment Frequency</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QCheckBox" name="commentcheck">
+          <property name="text">
+           <string>Check for Comments</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="label_16">
+          <property name="text">
+           <string>Avg. Function Length</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="functioncheck">
+          <property name="text">
+           <string>Check for functions</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLineEdit" name="comment_freq">
+          <property name="text">
+           <string>10</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <widget class="QLineEdit" name="timeout_box">
+          <property name="text">
+           <string>10</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLineEdit" name="avg_func_len">
+          <property name="baseSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>20</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QLabel" name="label_14">
+          <property name="text">
+           <string>Timeout (seconds):</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="QPushButton" name="define_inout">
+          <property name="text">
+           <string>Define Input/Output Cases</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Status:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTextBrowser" name="StatusBox"/>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="3" column="3">
+         <widget class="QLineEdit" name="errornum">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <widget class="QLabel" name="label_9">
+          <property name="text">
+           <string>Weight</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QLabel" name="label_10">
+          <property name="text">
+           <string>Number</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="4">
+         <widget class="QLineEdit" name="errorweight">
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="readOnly">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_11">
+          <property name="text">
+           <string>Lines</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_12">
+          <property name="text">
+           <string>Comments</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_13">
+          <property name="text">
+           <string>Functions</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Correct Answers</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>Incorrect Answers</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="4">
+         <widget class="QLineEdit" name="incorrectweight">
+          <property name="text">
+           <string>5</string>
+          </property>
+          <property name="readOnly">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="QLineEdit" name="correctweight">
+          <property name="text">
+           <string>10</string>
+          </property>
+          <property name="readOnly">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>Errors</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="linenumbers">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="functionnumbers">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="commentnumbers">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="QLineEdit" name="incorrectnum">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QLineEdit" name="correctnum">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Function Score</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="Function_Score">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="Comment_score">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Comment Score</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QPushButton" name="exportbutton">
+          <property name="text">
+           <string>Export</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="Total_Score">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_17">
+          <property name="text">
+           <string>Input Output Score</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_18">
+          <property name="text">
+           <string>Total Score</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="IO_Score">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
