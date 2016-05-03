@@ -55,6 +55,14 @@ class MyForm(QtGui.QMainWindow):
         self.ui.clearbutton.clicked.connect(self.clear_directory)
         self.ui.define_inout.clicked.connect(self.get_inout)
         self.ui.scriptlist.itemClicked.connect(self.doFile)
+        self.ui.exportbutton.clicked.connect(self.writetoFile)
+
+    def writetoFile(self):
+        path = QFileDialog.getSaveFileName()
+        f = open(path, 'w')
+        f.write(str(self))
+        f.close()
+
 
     def reset(self, listoftuples):
         if (self._files != None):
@@ -120,6 +128,34 @@ class MyForm(QtGui.QMainWindow):
         
     def get_inout(self):
         self.popup.show()
+
+    def __str__(self):
+        outs = str()
+        for b in self._files._files:
+            outs += str(b)
+            count = check_comments(b._filename)
+            outs +="\n\n    Lines: "+str(count._linecount)
+            outs +="\n    Comments: "+str(count._commentcount)
+            outs +="\n    Functions: "+str(count._functioncount)
+            t = tabulate(b.getResults(), linecount=count._linecount, commentcount=count._commentcount, functioncount=count._functioncount, correctweight= int(self.ui.correctweight.text()), wrongweight = int(self.ui.incorrectweight.text()), errorweight = int(self.ui.errorweight.text()), commentfreq= int(self.ui.comment_freq.text()), functionfreq= int(self.ui.avg_func_len.text()), includeComments= self.ui.commentcheck.checkState(), includeFunctions= self.ui.functioncheck.checkState())
+            outs+= "\n    Correct: "+str(t._correctraw)
+            outs+= "\n    Errors: "+str(t._errorraw)
+            outs+= "\n    Incorrect: "+str(t._incorrectraw)
+
+            outs+= "\n    Total Score: "+str(t.getScore())
+            outs +="\n    IO Score: " +str(t.getIOScore())
+            outs += "\n    Comment Score: "
+            if (self.ui.commentcheck.checkState()):
+                outs+= str(t.getCommentScore())
+            else:
+              outs+= "N/A"
+            outs+= "\n    Function Score: "
+            if (self.ui.functioncheck.checkState()):
+                outs+= str(t.getFunctionScore())
+            else:
+                outs+= "N/A"
+            outs+= "\n\n"
+        return outs
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
